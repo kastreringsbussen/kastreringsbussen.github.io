@@ -35,7 +35,7 @@ angular.module('Neutering', ['xc.indexedDB', 'notifications'])
 
     .controller('Controller', function Controller($scope, $indexedDB, $notification) {
 
-        var JOURNAL = 'Journal', SETTINGS = 'Settings', LATEST_BACKUP = 'LatestBackup';
+        var JOURNAL = 'Journal', LATEST_BACKUP = 'LatestBackup';
 
         $scope.id;
         $scope.journal;
@@ -51,7 +51,9 @@ angular.module('Neutering', ['xc.indexedDB', 'notifications'])
                     $scope.persisted = true;
                     $notification.info("Informationen har lagrats!");
                     min = (Date.now() - localStorage.getItem(LATEST_BACKUP)) / 1000 / 60;
-                    $notification.warning(Math.floor(min / 60) + " timmar, " + Math.floor(min % 60) + " minuters osparat arbete!");
+                    if (min > 60 * 60 * 10) {
+                        $notification.warning(Math.floor(min / 60) + " timmar, " + Math.floor(min % 60) + " minuters osparat arbete!");
+                    }
                 });
         }
 

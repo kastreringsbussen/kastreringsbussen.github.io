@@ -9,6 +9,7 @@ angular.module('notifications', []).
 
         var settings = {
             info: { duration: 4000 },
+            warning: { duration: 20000 },
             details: true
         };
 
