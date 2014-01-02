@@ -8,9 +8,7 @@ angular.module('Neutering', ['xc.indexedDB', 'notifications'])
                     keyPath: "id"
                 });
                 objStore.createIndex("id", "id", { unique: true });
-            }).upgradeDatabase(2, function(event, db, tx) {
-                localStorage.setItem('NeuteringLatestBackup', Date.now());
-            });
+            })
     })
 
     .directive('autoComplete', function($timeout) {
@@ -37,18 +35,22 @@ angular.module('Neutering', ['xc.indexedDB', 'notifications'])
 
     .controller('Controller', function Controller($scope, $indexedDB, $notification) {
 
-        var JOURNAL = 'Journal', SETTINGS = 'Settings';
+        var JOURNAL = 'Journal', SETTINGS = 'Settings', LATEST_BACKUP = 'LatestBackup';
 
         $scope.id;
         $scope.journal;
         $scope.persisted;
+
+        if (!localStorage.getItem(LATEST_BACKUP)) {
+            localStorage.setItem(LATEST_BACKUP, Date.now());
+        }
 
         $scope.upsert = function() {
             $indexedDB.objectStore(JOURNAL).upsert(
                 {"id": $scope.id, "journal": $scope.journal}).then(function(e) {
                     $scope.persisted = true;
                     $notification.info("Informationen har lagrats!");
-                    min = (Date.now() - localStorage.getItem('NeuteringLatestBackup')) / 1000 / 60;
+                    min = (Date.now() - localStorage.getItem(LATEST_BACKUP)) / 1000 / 60;
                     $notification.warning(Math.floor(min / 60) + " timmar, " + Math.floor(min % 60) + " minuters osparat arbete!");
                 });
         }
