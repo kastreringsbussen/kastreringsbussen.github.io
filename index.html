@@ -1,1 +1,98 @@
-Hello World
+<!DOCTYPE html>
+<html ng-app="Neutering">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Kastreringsbussens journalsystem</title>
+        <meta name="description" content="Kastreringsbussens journalsystem">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <link rel="stylesheet" href="css/notification.css">
+
+        <script src='js/jquery-1.7.2.min.js'></script>
+        <script src="js/jquery-ui.min.js"></script>
+
+        <script src="js/angular.min.js"></script>
+        <script src="js/indexeddb.js"></script>
+        <script src="js/notification.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+
+    <body>
+
+        <div id="page" class="wide">
+            <header id="branding" role="banner">
+                <hgroup>
+                    <h1 id="site-title"><span><a href="http://www.kastreringsbussen.se/" title="Kastreringsbussen" rel="home">Kastreringsbussen</a></span></h1>
+                </hgroup>
+                <nav>
+                    <div class="menu">
+                        <ul>
+                            <li><a class="active" href>Journalsystem</a></li>
+                            <li><a href>Export</a></li>
+                            <li><a href>Import</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <div ng-controller="Controller">
+
+                <form novalidate class="simple-form">
+                    <p>
+                        Id:<br />
+                        <input type="text" placeholder="Nytt eller tidigare lagrat id (autokompletteras)" class="search rounded" ng-model="id" auto-complete ui-items="names" ng-change="idChanged()" />
+                    </p>
+                    <p>
+                        Typ:
+                        <div class="rounded">
+                            <label><input type="radio" ng-model="journal.id_type" value="tattoo" />Tatuering</label>
+                            <label><input type="radio" ng-model="journal.id_type" value="chip" />Chip</label>
+                        </div>
+                    </p>
+                    <p>
+                        Namn:<br />
+                        <input type="text" placeholder="Kattens namn" class="rounded" ng-model="journal.name" />
+                    </p>
+                    <p>
+                        &Auml;gare:<br />
+                        <input type="text" placeholder="Ansvarig person, t.ex Andersson, Maria" class="rounded" ng-model="journal.owner" />
+                    </p>
+                    <p>
+                        <div class="rounded">
+                            <label><input type="checkbox" ng-model="journal.castrated" />Kastrerad</label>
+                        </div>
+                    </p>
+                    <p>
+                        Vikt:<br />
+                        <input type="number" placeholder="Vikt i gram" class="rounded" ng-model="journal.weight" />
+                    </p>
+                    <p>
+                        Anamnes:<br />
+                        <textarea class="rounded" ng-model="journal.anamnesis"></textarea>
+                    </p>
+                    <p>
+                        Status:<br />
+                        <textarea class="rounded" ng-model="journal.status"></textarea>
+                    </p>
+                    <p>
+                        Behandling:<br />
+                        <textarea class="rounded" ng-model="journal.treatment"></textarea>
+                    </p>
+                    <button ng-click="upsert()">Lagra</button>
+                    <button ng-click="delete()" ng-show="persisted">Ta bort</button>
+
+                    <div notifications="bottom right"></div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

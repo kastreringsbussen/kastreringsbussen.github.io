@@ -1,0 +1,300 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ *
+ * Base Print Styles, inline to save the HTTP request
+ *
+ */
+@media print {
+    * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
+    a, a:visited { color: #444 !important; text-decoration: underline; }
+    a:after { content: " (" attr(href) ")"; }
+    abbr:after { content: " (" attr(title) ")"; }
+    .ir a:after { content: ""; }  /* Don't show links for images */
+    pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+    thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+    tr, img { page-break-inside: avoid; }
+    @page { margin: 0.5cm; }
+    p, h2, h3 { orphans: 3; widows: 3; }
+    h2, h3{ page-break-after: avoid; }
+}
+
+/*
+ *
+ * Structure
+ *
+ */
+#page {
+    display: block;
+}
+#primary {
+    float: left;
+    margin: 0 -240px 0 0;
+    width: 100%;
+}
+#content {
+    margin: 0 280px 0 0;
+}
+#main .widget-area {
+    float: right;
+    overflow: hidden;
+    width: 220px;
+}
+
+
+/*
+ *
+ * Header
+ *
+ */
+#site-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: .67em 0;
+}
+#site-description {
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0 0 1em;
+}
+
+
+
+
+/*
+ *
+ * Content
+ *
+ */
+#content nav {
+    display: block;
+    overflow: hidden;
+}
+#content nav .nav-previous {
+    float: left;
+    width: 50%;
+}
+#content nav .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%;
+}
+#content #nav-above {
+    display: none;
+}
+.paged #content #nav-above,
+.single #content #nav-above {
+    display: block;
+}
+#nav-below {
+    margin: 1em 0 0;
+}
+.page-link {
+    margin: 0 0 1em;
+}
+
+/*
+ *
+ * Custom
+ *
+ */
+
+html, body, ul, li, p {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+.wide {
+    margin: 0 auto;
+    width: 940px;
+}
+
+.clear {
+    clear: both;
+}
+
+.rounded {
+    width:385px;
+    position:relative; top:2px;
+    padding:8px 5px 8px 5px;
+    border:1px solid #ccc;
+    margin-bottom: 10px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+
+.search {
+    width:360px;
+    padding-left: 30px;
+    background:white url('../img/search-icon.png') left center no-repeat;
+}
+
+body {
+    background: #f2eee8;
+    font: 13px/1.8em 'Open Sans', sans-serif;
+}
+
+#page {
+    min-height: 100%;
+}
+
+#main {
+    padding: 30px 0 270px;
+}
+
+#branding hgroup {
+    background: url('../img/bg-header.png') center no-repeat;
+}
+#branding .menu {
+    background: url('../img/bg-menu.png') repeat-x;
+    border: solid 1px #dedede;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+#branding .menu ul {
+    overflow: hidden;
+    padding: 0 5px;
+}
+#branding .menu ul li {
+    float: left;
+}
+#branding .menu ul li a {
+    color: #555555;
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 42px;
+    padding: 0 18px;
+    text-decoration: none;
+}
+#branding .menu ul li a:active,
+#branding .menu ul li a.active {
+    color: #6eaa00;
+}
+#branding .menu ul li a:hover {
+    color: #ebc33d;
+}
+
+#site-title {
+    margin: 0;
+}
+#site-title a {
+    background: url('../img/logo.png') no-repeat;
+    display: block;
+    height: 140px;
+    margin: 0;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 380px;
+}
+
+#content {
+    margin: 0;
+}
+
+form {
+    padding: 10px;
+}
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
